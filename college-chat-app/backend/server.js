@@ -24,3 +24,11 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+
+const messages = [];
+
+app.post("/chat", (req, res) => {
+  const { text, anonymous } = req.body;
+  messages.push({ text, anonymous });
+  res.status(200).json({ success: true });
+});
